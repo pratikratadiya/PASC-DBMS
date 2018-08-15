@@ -1,0 +1,25 @@
+{% extends 'dbms/base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+		<br><br>
+		{% if messages %}
+		{% for msg in messages %}
+		<h3>{{ msg }}</h3>
+		{% endfor %}
+		{% endif %}
+		<form action = "{% url 'dbms:check' %}" method="post">
+			{% csrf_token %}
+			<div class="form-group" style="color:black;">
+			<p style="color:aqua;">Enter Receipt Number :</p>
+			<input type="text" name="rno"><br>
+			</div>
+			<input type="submit" value="Check" name='check'  class="btn btn-default">
+		</form>
+		<br><br>
+		<a href="/certify/"><h4 style="color: white;">Click to Acknowledge certification!</h4></a>
+		<br><br>
+
+		<a href="/chosevent/"><h4 style="color: white;">Click to check Event-based Participant Info!</h4></a>
+{% endif %}
+
+{% endblock %}

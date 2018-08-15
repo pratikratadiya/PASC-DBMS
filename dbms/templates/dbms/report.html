@@ -1,0 +1,36 @@
+{% extends 'dbms/base.html' %}
+{% block content %}
+	<center>
+	<h2 style="color:white;">List of Events registered in:</h2><br>
+	{% if pend_events %}
+	<table class="table table-striped" style="color: black;">
+	    <thead>
+	    <tr style="color: white;">
+		<th>Receipt-No</th>
+		<th>Name</th>
+		<th>Event-Name</th>
+		<th>Slot</th>
+	    </tr>
+	    </thead>
+	    <tbody>
+	      {% for x in pend_events %}
+	      <tr>
+			<td>{{ x.receipt_no.receipt_no }}</td>
+			<td>{{ x.receipt_no.name}}</td>
+			<td>{{ x.event.event_name }}</td>
+			<td>{{ x.slot_no.slot_timing }}</td>
+			{% if status %}
+			<td><a href="/award/{{x.pk}}/"><button class="btn btn-default">Validate</button></a>
+			{% else %}
+			<td><a href="/update/{{x.pk}}/"><button class="btn btn-default">Confirm</button></a>
+			{% endif %}
+	      </tr>
+	      {% endfor %}
+	    </tbody>
+	</table>	        
+    {% else %}
+	<h2>No result</h2>
+	{% endif %} 
+	</center>  
+	
+{% endblock %}

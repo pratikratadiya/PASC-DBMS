@@ -1,0 +1,21 @@
+
+<html>
+<head>
+<title>PULZION'18</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #222;color:aqua;font-family:'serif';">
+	<center>
+	<h2 class="heading" style="margin-top:10%;">Login</h2>
+
+	<form method="post" style="margin-left: 25px; padding-top: 15px;">      <!--Displaying login form as paragraph-->  
+	  {% csrf_token %}      <!--Important for security reasons-->
+	  {{ form.as_p }}
+	  <button type="submit"  class="btn btn-default">Login</button>
+	</form>
+	</center>
+</body>
+</html>

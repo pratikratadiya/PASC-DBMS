@@ -1,0 +1,14 @@
+{% extends 'dbms/base.html' %}
+{% block content %}
+{% if messages %}
+{% for msg in messages %}
+<h3>{{ msg }}</h3>
+{% endfor %}
+{% endif %}
+<h2>Enter receipt number:
+	<form action = "{% url 'dbms:check' %}" method="post">
+	{% csrf_token %}
+	<input type="text" name="rno">
+	<input type="submit" value="Certify" name='certify' style="color: black;">
+</form>
+{% endblock %}

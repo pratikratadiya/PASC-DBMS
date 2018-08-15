@@ -1,0 +1,28 @@
+{% extends 'dbms/base.html' %}
+{% block content %}
+  
+  <center>
+   <h3 style="margin-top:5%;color:aqua;">Select Event-Name</h3><br>
+   <div class="list-group">   
+   <form action = "{% url 'dbms:event' %}" method="post">
+    {% csrf_token %}
+    
+    <select name="ename" class="form-control" style="width:20%;">
+    {% for x in ename %}
+      <option value="{{x.event_name}}">{{x.event_name}}</option>
+      {% endfor %}
+      </select>
+      
+      <h3 style="color:aqua;">Select slot:</h3><br>
+      <select name="slot" class="form-control" style="width:20%;">
+      <option value="all">All</option>
+      {% for y in slotlist %}
+      <option value="{{y.slot_no}}">{{y.slot_timing}}</option>
+      {% endfor %}
+      </select>
+    <br> <br>
+    <input type="submit" value="Submit" class="btn btn-default">
+  </form>
+  </div>
+  </center>
+  {% endblock %}
