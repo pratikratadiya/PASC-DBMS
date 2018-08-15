@@ -1,0 +1,38 @@
+{% extends 'dbms/base.html' %}
+{% block content %}
+		{% if messages %}
+<div style="margin-left: 40%;">
+		{% for msg in messages %}
+		<h3 style="color: cyan;">{{ msg }}</h3>
+		{% endfor %}
+</div>		
+		{% endif %}
+
+<div style="margin-left: -50%;margin-top: -5%;color: black;background-color: grey;">
+<br>
+		<a href="/existing/"><button class="btn btn-default">Add over existing receipt(For multiple events on one receipt)</button></a>
+		<br><br>
+		<form method="post">
+			{% csrf_token %}
+			
+			{{ form.as_p }}
+	<input type="radio" name="team" value="Is team"> Is team<br><br>
+    <select name="ename" style="width:20%;">
+    {% for x in ename %}
+      <option value="{{x.event_name}}">{{x.event_name}}</option>
+      {% endfor %}
+      </select>
+<br><br>
+      <select name="slot" class="form-control" style="width:25%;">
+      {% for y in slotlist %}
+      <option value="{{y.slot_no}}">{{y.slot_timing}}</option>
+      {% endfor %}
+      </select>
+	<br>
+			<input type="submit" value="Submit" name='submit'  class="btn btn-default">
+		</form>
+
+		<br>
+</div>
+
+{% endblock %}

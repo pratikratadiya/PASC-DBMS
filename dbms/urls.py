@@ -14,4 +14,6 @@ urlpatterns = [
 	path('certify/', views.certify, name='certify'),
 	path('chosevent/', views.chosevent, name='chosevent'),
 	path('event/', views.event, name='event'),
+	path('newparticipant/', views.newparticipant, name='newparticipant'),
+	path('existing/', views.existing, name='existing'),
 ]

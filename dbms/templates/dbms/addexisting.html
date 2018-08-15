@@ -1,0 +1,24 @@
+{% extends 'dbms/base.html' %}
+{% block content %}
+		{% if messages %}
+		{% for msg in messages %}
+		<h3 style="color: cyan;">{{ msg }}</h3>
+		{% endfor %}
+		{% endif %}
+<div style="margin-left: -50%;margin-top: -5%;color: black;background-color: grey;">
+<br>
+		<form method="post">
+			{% csrf_token %}
+			<input type="text" placeholder="Enter receipt number" name="rno"><br><br>			
+			<input type="radio" name="team" value="Is team"> Is team<br><br>
+			{{ form.as_p }}
+			<br>
+
+	<br>
+			<input type="submit" value="Submit" name='submit'  class="btn btn-default">
+		</form>
+
+		<br>
+</div>
+
+{% endblock %}

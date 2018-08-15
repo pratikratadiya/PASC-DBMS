@@ -14,10 +14,11 @@
       </select>
       
       <h3 style="color:aqua;">Select slot:</h3><br>
-      <select name="slot" class="form-control" style="width:20%;">
+      <select name="slot" class="form-control" style="width:25%;">
       <option value="all">All</option>
+      <option value="repall">Reported-All</option>
       {% for y in slotlist %}
-      <option value="{{y.slot_no}}">{{y.slot_timing}}</option>
+      <option value="{{y.slot_no}}">Reported-{{y.slot_timing}}</option>
       {% endfor %}
       </select>
     <br> <br>
