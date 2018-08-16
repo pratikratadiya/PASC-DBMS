@@ -9,12 +9,16 @@
 <br>
 		<form method="post">
 			{% csrf_token %}
-			<input type="text" placeholder="Enter receipt number" name="rno"><br><br>			
-			<input type="radio" name="team" value="Is team"> Is team<br><br>
+			<div class="form-group">
+			<input type="text" placeholder="Enter receipt number" name="rno">
+			</div><br>			
+			<input type="radio" name="team" value="Team" class="radio-inline">Team
+			<input type="radio" name="team" value="Individual" class="radio-inline">Individual
+			<br><br>
 			{{ form.as_p }}
 			<br>
 
-	<br>
+	
 			<input type="submit" value="Submit" name='submit'  class="btn btn-default">
 		</form>
 

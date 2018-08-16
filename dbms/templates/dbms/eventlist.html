@@ -1,7 +1,7 @@
 {% extends 'dbms/base.html' %}
 {% block content %}
 	<center>
-	<h2 style="color:navy;">List of Participants:</h2><br>
+	<h2 style="color:aqua;">List of Participants:</h2><br>
 	{% if p_list %}
 	<table class="table table-striped">
 	    <thead>
@@ -9,6 +9,7 @@
 		<th>Receipt-No</th>
 		<th>Name</th>
 		<th>Slot</th>
+		<th>Is Team?</th>
 	    </tr>
 	    </thead>
 	    <tbody>
@@ -17,7 +18,7 @@
 			<td>{{ x.receipt_no.receipt_no }}</td>
 			<td>{{ x.receipt_no.name}}</td>
 			<td>{{ x.slot_no.slot_timing}}</td>
-			
+			<td>{{x.is_team}}</td>
 	      </tr>
 	      {% endfor %}
 	    </tbody>

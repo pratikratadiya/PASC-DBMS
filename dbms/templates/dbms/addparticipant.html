@@ -1,5 +1,6 @@
 {% extends 'dbms/base.html' %}
 {% block content %}
+	
 		{% if messages %}
 <div style="margin-left: 40%;">
 		{% for msg in messages %}
@@ -10,14 +11,17 @@
 
 <div style="margin-left: -50%;margin-top: -5%;color: black;background-color: grey;">
 <br>
-		<a href="/existing/"><button class="btn btn-default">Add over existing receipt(For multiple events on one receipt)</button></a>
+<!--		<a href="/existing/"><button class="btn btn-default">Add over existing receipt(For multiple events on one receipt)</button></a>-->
 		<br><br>
 		<form method="post">
 			{% csrf_token %}
 			
 			{{ form.as_p }}
-	<input type="radio" name="team" value="Is team"> Is team<br><br>
-    <select name="ename" style="width:20%;">
+	
+	<input type="radio" name="team" value="Team" class="radio-inline">Team
+	<input type="radio" name="team" value="Individual" class="radio-inline">Individual
+	<br><br>
+    <select name="ename" style="width:20%;" class="form-control">
     {% for x in ename %}
       <option value="{{x.event_name}}">{{x.event_name}}</option>
       {% endfor %}
@@ -34,5 +38,4 @@
 
 		<br>
 </div>
-
 {% endblock %}

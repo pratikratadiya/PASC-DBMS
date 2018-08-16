@@ -67,7 +67,8 @@ def newparticipant(request):
 			post.event = b
 			c = Slot_list.objects.get(slot_no=slot)
 			post.slot_no = c
-			if ('team').checked in request.POST:
+			team_type = request.POST.get('team')
+			if team_type=="Team" :
 				post.is_team = True
 			post.save()
 			messages.success(request, "Registration done succesfully")
@@ -90,7 +91,8 @@ def existing(request):
 			rno = request.POST.get('rno',False)
 			participant = Participant.objects.get(receipt_no=rno)
 			a.receipt_no = participant
-			if 'team' in request.POST:
+			team_type = request.POST.get('team')
+			if team_type=="Team" :
 				a.is_team = True			
 			a.save()
 			messages.success(request, "Registration done succesfully")

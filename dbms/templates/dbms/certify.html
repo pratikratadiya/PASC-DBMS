@@ -5,10 +5,13 @@
 <h3>{{ msg }}</h3>
 {% endfor %}
 {% endif %}
-<h2>Enter receipt number:
+<h2>Enter receipt number:</h2><br>
 	<form action = "{% url 'dbms:check' %}" method="post">
 	{% csrf_token %}
-	<input type="text" name="rno">
-	<input type="submit" value="Certify" name='certify' style="color: black;">
-</form>
+	<div style="color: black;">
+	<input type="text" name="rno"><br><br>
+	</div>
+	<input type="submit" value="Certify" name='certify' class="btn btn-default">
+	
+	</form>
 {% endblock %}
