@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import ParticipantForm, RegistrationForm
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import user_passes_test, login_required
 from .models import user, Event, Participant, Registration, Slot_list
 
 # Create your views here.
@@ -9,6 +10,7 @@ from .models import user, Event, Participant, Registration, Slot_list
 def home(request):
 	return render(request, 'dbms/index.html', {})
 
+@user_passes_test(lambda u: u.is_superuser)
 def check(request):
 
 	if 'certify' in request.POST:
@@ -35,14 +37,17 @@ def award(request,pk):
 	messages.success(request, obj.receipt_no.name + " given certificate for " + obj.event.event_name)
 	return HttpResponseRedirect('/certify/')
 
+@user_passes_test(lambda u: u.is_superuser)
 def certify(request):
 	return render(request, 'dbms/certify.html')
 
+@login_required
 def chosevent(request):
 	evelist = Event.objects.all()
 	slotlist = Slot_list.objects.all()
 	return render(request, 'dbms/list.html', {'ename':evelist,'slotlist':slotlist})
 
+@login_required
 def event(request):
 	ename = request.POST.get('ename',False)
 	slot = request.POST.get('slot',False)
@@ -54,6 +59,7 @@ def event(request):
 		result1 = Registration.objects.filter(event__event_name=ename,slot_no__slot_no=slot,reported=True,certificate=False).order_by('receipt_no__receipt_no')
 	return render(request, 'dbms/eventlist.html', {'p_list':result1})
 
+@user_passes_test(lambda u: u.is_superuser)
 def newparticipant(request):
 	if request.method == 'POST':
 		form = ParticipantForm(request.POST)
